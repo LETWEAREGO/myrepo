@@ -1,0 +1,197 @@
+#lang racket
+;https://htdp.org/2024-11-6/Book/part_one.html#%28part._sec~3apredicates%29
+;Fixed-Size Data
+;1.7 Predicates :know thy data
+(=(+ 1 2) 3)
+(number? 4)
+(number? pi)
+(number? #true)
+(number? "fortytwo")
+;2 Functions and Programs
+;2.1 functions
+(define (f x) 1)
+(define (g x y)(+ 1 1))
+(define  (h x y z)(+ (* 2 2) 3))
+(define x 3)
+(define (ff a)
+  (* 10 a))
+
+( f 1)
+( f "hello world")
+(f #true)
+
+
+(+ (ff 3 ) 2)
+(* (ff 4)(+ (ff 3) 2))
+(ff(ff 1))
+;excercise11
+; 定义一个名为 distance_to_origin 的函数,它接受两个参数 x 和 y
+(define (distance_to_origin x y)
+  ; 使用勾股定理计算点 (x, y) 到原点的距离
+  (sqrt (+ (sqr x) (sqr y))))
+(distance_to_origin 3 4)
+
+;exercise12
+; 定义 cvolume 函数,计算正方体的体积
+(define (cvolume side)
+  (* side side side)) ; side * side 是一个面的面积,再乘以 side 就是体积,因为正方体体积等于边长的立方
+; 定义 csurface 函数,计算正方体的表面积
+(define (csurface side)
+  (* 6 (* side side))) ; 正方体有 6 个面,每个面的面积是 side * side,所以乘以 6 得到表面积
+(cvolume 2) ; 计算边长为 2 的正方体的体积
+(csurface 2) ; 计算边长为 2 的正方体的表面积
+;exercise13
+(define (string-first str)
+  (substring str 0 1))
+(string-first "hello")
+;exercise14
+(define (string-last str)
+  (string-ref str (sub1 (string-length str))))
+  (string-last "hello")
+
+;该函数用于提取一个非空字符串的最后一个字符:
+; 定义 string-last 函数,它接受一个字符串作为输入
+(define (string-last1 str)
+  ; 使用 string-ref 函数和 (sub1 (string-length str)) 来获取最后一个字符
+  (string-ref str (sub1 (string-length str))))
+; 测试函数
+(string-last1 "hello")
+
+
+;exercise15
+(define (==> sunny friday)
+  (or (not sunny) friday))
+
+;; 示例调用
+(==> #f #t)
+(==> #t #t)
+(==> #t #f)
+(==> #f #f)
+;exercise16
+; Function to calculate the area (number of pixels) of an image
+; Assumes the image is represented as a 2D list
+(define (image-area img)
+  (apply + (map length img)))
+; Example image represented as a 2D list
+
+ 
+
+; 定义函数计算图像面积
+(define (image-area1 img)
+  (foldl + 0
+         (map (lambda (row)
+                (foldl + 0 row))
+              img)))
+
+; 定义示例图像
+(define cat '((1 0 1) (0 1 0) (1 1 1)))
+
+; 调用函数计算面积
+(image-area cat)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
